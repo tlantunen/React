@@ -1,19 +1,16 @@
-function QuoteCount({quotes}) {
+import useQuotes from "../useQuotes";
 
-    return (
-    
-    <div>
+const QuoteCount = () => {
+  const { totalQuoteCount } = useQuotes()
+  
+  return (
 
-      {quotes.length === 0 &&
-      <h4>No quotes!</h4>
-      }
-       
-        <h4>Total quote count: {quotes.length} </h4>
-        <h4>Quotes in view: {quotes.length} </h4>
-
+      <div>
+        {totalQuoteCount === 0 && <h4>No quotes!</h4>}
+           <p>Total quote count: {totalQuoteCount}</p>
       </div>
 
-    );
-}
+  );
+};
  
 export default QuoteCount;

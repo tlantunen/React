@@ -1,29 +1,32 @@
-const FetchQuote = ({quotes}) => {
+// import { useContext } from "react";
+// import { AppContext } from "../app-context";
+import useQuotes from "../useQuotes";
 
-    const deleteQuote = (quotes) => {
-        console.log("quote deleted")
-      
-        //tähän pyssäs tekeminen, en saanut millään toimimaan
-        
-      }
+const FetchQuote = ({ quote }) => {
+  // const [state, setState] = useContext(AppContext)
+  // const { quoteAdd } = useQuotes()
+  
+  const { deleteQuote } = useQuotes()
+  const { loadQuotes } = useQuotes()
+
+  const quoteAllDelete = () => {
+    deleteQuote({ quote })    
+  }
     
-      const addQuote = () => {
-        console.log("quote added")
-      
-       
-        
-      }
+  const addQuote = () => {
+    // let q = {}
+    // quoteAdd(q)
+    loadQuotes()
+  }
 
-    return (
-        <div>
+  return (
 
-            <input onClick={addQuote} type="button" value="Add a quote" />
-            <input onClick={deleteQuote} type="button" value="Delete all quotes" />
-            
-        </div>
+      <div>
+        <input onClick={addQuote} type="button" value="Add a quote" />
+        <input onClick={quoteAllDelete} type="button" value="Delete all quotes" />        
+      </div>
     
-    );
+  );
 };
 
- 
 export default FetchQuote;
